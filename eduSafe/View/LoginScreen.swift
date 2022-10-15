@@ -11,8 +11,15 @@ struct LoginScreen: View {
     @State var email = ""
     @State var password = ""
     @State var showAlert = false
-    var fieldsFilled: Bool {
-        !email.isEmpty && !password.isEmpty
+    var fieldsEmpty: Bool {
+        email.isEmpty || password.isEmpty
+    }
+    var buttonColor: Color {
+        if (!fieldsEmpty) {
+            return Color(.black)
+        } else {
+            return Color(.gray)
+        }
     }
     
     @EnvironmentObject var userVM: UserViewModel
@@ -28,15 +35,21 @@ struct LoginScreen: View {
             Divider().padding(.leading).padding(.trailing)
             
             Button(action: {
+                
+            }) {
+                Text("Forgot password?").tint(.blue).padding(.top)
+            }
+            
+            Button(action: {
                 print("proceed clicked")
             }) {
                 HStack {
                     Text("Proceed").foregroundColor(.white).fontWeight(Font.Weight.medium).font(.system(size: 30, design: .rounded))
-                }.frame(minWidth: 200, maxWidth: 400, minHeight: 60, maxHeight: 75, alignment: .center).background(Color.black).cornerRadius(20, antialiased: true).shadow(radius: 4)
+                }.frame(minWidth: 200, maxWidth: 400, minHeight: 60, maxHeight: 75, alignment: .center).background(buttonColor).cornerRadius(20, antialiased: true).shadow(radius: 4)
                 
-            }.padding(EdgeInsets.init(top: 40, leading: 20, bottom: 20, trailing: 20)).shadow(radius: 4).alert("Invalid field or error 404.", isPresented: $showAlert) {
+            }.disabled(fieldsEmpty).padding(EdgeInsets.init(top: 40, leading: 20, bottom: 20, trailing: 20)).shadow(radius: 4).alert("Invalid field or error 404.", isPresented: $showAlert) {
                 Button("OK", role: .cancel) { showAlert = false }
-            }.disabled(fieldsFilled)
+            }
         }
     }
 }
