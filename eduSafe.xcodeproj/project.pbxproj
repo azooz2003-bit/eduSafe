@@ -19,6 +19,9 @@
 		A3891E9A28FA4DC700CEB435 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A3891E9928FA4DC700CEB435 /* FirebaseFirestore */; };
 		A3891E9C28FA4DC700CEB435 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3891E9B28FA4DC700CEB435 /* FirebaseFirestoreSwift */; };
 		A3891E9E28FB014500CEB435 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3891E9D28FB014500CEB435 /* MapView.swift */; };
+		A43301BA28FB1ED2009793E0 /* TestLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43301B928FB1ED2009793E0 /* TestLocationView.swift */; };
+		A43301BC28FB1EF5009793E0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43301BB28FB1EF5009793E0 /* LocationManager.swift */; };
+		A43301BE28FB1F1F009793E0 /* LocationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43301BD28FB1F1F009793E0 /* LocationRequestView.swift */; };
 		D5F2DC4428FAF5930045D51D /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F2DC4328FAF5930045D51D /* School.swift */; };
 		D5F2DC4628FAF85D0045D51D /* SchoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F2DC4528FAF85D0045D51D /* SchoolViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +37,9 @@
 		A3891E9228FA4B2500CEB435 /* PopUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpScreen.swift; sourceTree = "<group>"; };
 		A3891E9428FA4C9F00CEB435 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3891E9D28FB014500CEB435 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A43301B928FB1ED2009793E0 /* TestLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLocationView.swift; sourceTree = "<group>"; };
+		A43301BB28FB1EF5009793E0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A43301BD28FB1F1F009793E0 /* LocationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
 		D5F2DC4328FAF5930045D51D /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		D5F2DC4528FAF85D0045D51D /* SchoolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +77,7 @@
 		A36E154C28FA435700239E22 /* eduSafe */ = {
 			isa = PBXGroup;
 			children = (
+				A43301BF28FB1F3D009793E0 /* Location Stuff */,
 				A3891E9428FA4C9F00CEB435 /* GoogleService-Info.plist */,
 				A36E155D28FA462000239E22 /* View */,
 				A36E154D28FA435700239E22 /* eduSafeApp.swift */,
@@ -108,6 +115,16 @@
 				A3891E9D28FB014500CEB435 /* MapView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A43301BF28FB1F3D009793E0 /* Location Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				A43301BD28FB1F1F009793E0 /* LocationRequestView.swift */,
+				A43301BB28FB1EF5009793E0 /* LocationManager.swift */,
+				A43301B928FB1ED2009793E0 /* TestLocationView.swift */,
+			);
+			path = "Location Stuff";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,8 +208,11 @@
 			files = (
 				A3891E8F28FA4A2F00CEB435 /* UserViewModel.swift in Sources */,
 				A3891E9E28FB014500CEB435 /* MapView.swift in Sources */,
+				A43301BC28FB1EF5009793E0 /* LocationManager.swift in Sources */,
 				D5F2DC4428FAF5930045D51D /* School.swift in Sources */,
 				A3891E9328FA4B2500CEB435 /* PopUpScreen.swift in Sources */,
+				A43301BA28FB1ED2009793E0 /* TestLocationView.swift in Sources */,
+				A43301BE28FB1F1F009793E0 /* LocationRequestView.swift in Sources */,
 				A36E154E28FA435700239E22 /* eduSafeApp.swift in Sources */,
 				A3891E9128FA4A8400CEB435 /* User.swift in Sources */,
 				A3891E8D28FA478B00CEB435 /* LoginScreen.swift in Sources */,
