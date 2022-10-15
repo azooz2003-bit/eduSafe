@@ -25,10 +25,10 @@ private let db = Firestore.firestore()
 
 
 
-func getImage() {
-    let storage = Storage.storage()
-    let gsReference = storage.reference(forURL: "gs://edusafe-ffcb0.appspot.com/YaleProfile.jpeg")
-    //
+//func getImage() {
+//    let storage = Storage.storage()
+//    let gsReference = storage.reference(forURL: "gs://edusafe-ffcb0.appspot.com/YaleProfile.jpeg")
+//    //
 //    gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
 //      if let error = error {
 //          print(error)
@@ -36,7 +36,7 @@ func getImage() {
 //        return UIImage(data: data!)
 //      }
 //    }
-}
+//}
 
 
 //
