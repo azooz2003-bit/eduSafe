@@ -10,11 +10,11 @@ struct Coordinate: Codable {
     var lon:Float
 }
 
-struct Corners: Codable {
-    var topLeft:Coordinate
-    var topRight:Coordinate
-    var BottomLeft:Coordinate
-    var BottomRight:Coordinate
+struct mapEdges: Codable {
+    var top:Float
+    var bottom:Float
+    var left:Float
+    var right:Float
 }
 
 struct imageMap: Codable {
@@ -35,11 +35,11 @@ import Foundation
 class School: Codable {
     var uuid: String // admin's uid is the school's id
     var name: String
-    var corners: Corners
+    var corners: mapEdges
     var images: [imageMap] = []
     var alerts: [Alert] = []
 
-    init(uuid: String, name: String, corners: Corners) {
+    init(uuid: String, name: String, corners: mapEdges) {
         self.name = name
         self.uuid = uuid
         self.corners = corners

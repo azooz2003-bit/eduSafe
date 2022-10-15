@@ -28,17 +28,20 @@ class UserViewModel: ObservableObject {
         user != nil && userIsAuthenticated
     }
     
-    func login(email: String, password: String, hasPassword: Bool, completion: @escaping (Bool) -> (Void)) {
+    func login(email: String, password: String, completion: @escaping (Bool) -> (Void)) {
         isAuthenticating = true
         
         auth.signIn(withEmail: email, password: password) { [weak self] result, error in
             
-            if result == nil || error != nil  || !hasPassword {
+            
+            if result == nil || error != nil {
                 self?.isAuthenticating = false
                 completion(false)
                 return
             } else {
                 print((self?.uuid)!)
+                
+                // check if self?.hasPassword, if not, then exit and go to the user setup page with send email
                  
                 self?.sync() { result in
                     print("Sync done:")
@@ -77,7 +80,15 @@ class UserViewModel: ObservableObject {
     }
 }
 
-// authentication functions still needed:
-// handleNewUser: (new page for setup user) if uid in database and !hasPassword, send an email
+// authentication functions needed:
+// sendPasswordEmail
+// sendResetPasswordEmail
+// updateUser (password and maybe name)
+// logout
+
+
+// other functions:
+// createAlert: after a user presses the alert button, make new alert object in user and in school
+
 
 
