@@ -21,11 +21,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct eduSafeApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    let userVM = UserViewModel()
+    
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
+                let userVM = UserViewModel()
                 PopUpScreen().environmentObject(userVM)
             }
             
