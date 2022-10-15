@@ -6,6 +6,25 @@
 //
 
 import Foundation
+import SwiftUI
+
+
+//private let auth = Auth.auth()
+//private let db = Firestore.firestore()
+
+//
+//let store = Storage.storage()
+//
+//let gsReference = storage.reference(forURL: "gs://edusafe-ffcb0.appspot.com/YaleProfile.jpeg")
+//
+//islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//  if let error = error {
+//    // Uh-oh, an error occurred!
+//  } else {
+//    // Data for "images/island.jpg" is returned
+//    let image = UIImage(data: data!)
+//  }
+//}
 
 // needed functions
 // locationToMap: takes in coordinate (and elevation) and places it on the map image
