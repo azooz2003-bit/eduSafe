@@ -31,7 +31,7 @@ struct PopUpScreen: View {
                         Label("", systemImage: "arrow.right").foregroundColor(.white).font(.largeTitle).bold()
                     }.frame(minWidth: 200, maxWidth: 400, minHeight: 60, maxHeight: 75, alignment: .center).background(Color.gray).cornerRadius(20, antialiased: true).shadow(radius: 2)
                     
-                }.padding(EdgeInsets.init(top: 100, leading: 20, bottom: 0, trailing: 20)).shadow(radius: 4).alert("Invalid field or error 404.", isPresented: $showAlert) {
+                }.padding(EdgeInsets.init(top: 500, leading: 20, bottom: 0, trailing: 20)).shadow(radius: 4).alert("Invalid field or error 404.", isPresented: $showAlert) {
                     Button("OK", role: .cancel) { showAlert = false }
                 }
                 
