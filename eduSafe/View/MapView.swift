@@ -7,9 +7,12 @@
 
 import SwiftUI
 
+
+
 struct MapView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image("Image")
+        // gs://edusafe-ffcb0.appspot.com/fake_school_blueprint.png
     }
 }
 
@@ -18,3 +21,6 @@ struct MapView_Previews: PreviewProvider {
         MapView()
     }
 }
+
+
+
