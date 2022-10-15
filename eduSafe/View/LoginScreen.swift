@@ -36,7 +36,7 @@ struct LoginScreen: View {
                 
             }.padding(EdgeInsets.init(top: 40, leading: 20, bottom: 20, trailing: 20)).shadow(radius: 4).alert("Invalid field or error 404.", isPresented: $showAlert) {
                 Button("OK", role: .cancel) { showAlert = false }
-            }.tint(.blue).disabled(fieldsFilled)
+            }.disabled(fieldsFilled)
         }
     }
 }
