@@ -17,7 +17,7 @@ struct PopUpScreen: View {
         NavigationStack {
             VStack {
                 
-                NavigationLink(destination: LoginScreen(), isActive: $loginPressed) {
+                NavigationLink(destination: LoginScreen().environmentObject(userVM), isActive: $loginPressed) {
                     EmptyView()
                 }
                 
@@ -36,7 +36,10 @@ struct PopUpScreen: View {
                 }
                 
                 Button(action: {
-                    loginPressed = true
+                    Task {
+                        await userVM.fetchAllSchools()
+                        loginPressed = true
+                    }
                     print("clicked login")
                 }) {
                     HStack {
