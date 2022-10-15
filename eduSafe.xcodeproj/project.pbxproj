@@ -8,17 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		A36E154E28FA435700239E22 /* eduSafeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E154D28FA435700239E22 /* eduSafeApp.swift */; };
-		A36E155028FA435700239E22 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E154F28FA435700239E22 /* ContentView.swift */; };
 		A36E155228FA435800239E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36E155128FA435800239E22 /* Assets.xcassets */; };
 		A36E155528FA435800239E22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36E155428FA435800239E22 /* Preview Assets.xcassets */; };
+		A3891E8D28FA478B00CEB435 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3891E8C28FA478B00CEB435 /* LoginScreen.swift */; };
+		A3891E8F28FA4A2F00CEB435 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3891E8E28FA4A2F00CEB435 /* UserViewModel.swift */; };
+		A3891E9128FA4A8400CEB435 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3891E9028FA4A8400CEB435 /* User.swift */; };
+		A3891E9328FA4B2500CEB435 /* PopUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3891E9228FA4B2500CEB435 /* PopUpScreen.swift */; };
+		A3891E9528FA4C9F00CEB435 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3891E9428FA4C9F00CEB435 /* GoogleService-Info.plist */; };
+		A3891E9828FA4DC700CEB435 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A3891E9728FA4DC700CEB435 /* FirebaseAuth */; };
+		A3891E9A28FA4DC700CEB435 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A3891E9928FA4DC700CEB435 /* FirebaseFirestore */; };
+		A3891E9C28FA4DC700CEB435 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3891E9B28FA4DC700CEB435 /* FirebaseFirestoreSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A36E154A28FA435700239E22 /* eduSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eduSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36E154D28FA435700239E22 /* eduSafeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eduSafeApp.swift; sourceTree = "<group>"; };
-		A36E154F28FA435700239E22 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A36E155128FA435800239E22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A36E155428FA435800239E22 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A3891E8C28FA478B00CEB435 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		A3891E8E28FA4A2F00CEB435 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		A3891E9028FA4A8400CEB435 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A3891E9228FA4B2500CEB435 /* PopUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpScreen.swift; sourceTree = "<group>"; };
+		A3891E9428FA4C9F00CEB435 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +37,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3891E9828FA4DC700CEB435 /* FirebaseAuth in Frameworks */,
+				A3891E9A28FA4DC700CEB435 /* FirebaseFirestore in Frameworks */,
+				A3891E9C28FA4DC700CEB435 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +65,10 @@
 		A36E154C28FA435700239E22 /* eduSafe */ = {
 			isa = PBXGroup;
 			children = (
+				A3891E9428FA4C9F00CEB435 /* GoogleService-Info.plist */,
+				A36E155D28FA462000239E22 /* View */,
 				A36E154D28FA435700239E22 /* eduSafeApp.swift */,
-				A36E154F28FA435700239E22 /* ContentView.swift */,
+				A36E155B28FA45FC00239E22 /* Model + Controller */,
 				A36E155128FA435800239E22 /* Assets.xcassets */,
 				A36E155328FA435800239E22 /* Preview Content */,
 			);
@@ -65,6 +81,24 @@
 				A36E155428FA435800239E22 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A36E155B28FA45FC00239E22 /* Model + Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A3891E8E28FA4A2F00CEB435 /* UserViewModel.swift */,
+				A3891E9028FA4A8400CEB435 /* User.swift */,
+			);
+			path = "Model + Controller";
+			sourceTree = "<group>";
+		};
+		A36E155D28FA462000239E22 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A3891E9228FA4B2500CEB435 /* PopUpScreen.swift */,
+				A3891E8C28FA478B00CEB435 /* LoginScreen.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +117,11 @@
 			dependencies = (
 			);
 			name = eduSafe;
+			packageProductDependencies = (
+				A3891E9728FA4DC700CEB435 /* FirebaseAuth */,
+				A3891E9928FA4DC700CEB435 /* FirebaseFirestore */,
+				A3891E9B28FA4DC700CEB435 /* FirebaseFirestoreSwift */,
+			);
 			productName = eduSafe;
 			productReference = A36E154A28FA435700239E22 /* eduSafe.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +150,9 @@
 				Base,
 			);
 			mainGroup = A36E154128FA435700239E22;
+			packageReferences = (
+				A3891E9628FA4DC700CEB435 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = A36E154B28FA435700239E22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +169,7 @@
 			files = (
 				A36E155528FA435800239E22 /* Preview Assets.xcassets in Resources */,
 				A36E155228FA435800239E22 /* Assets.xcassets in Resources */,
+				A3891E9528FA4C9F00CEB435 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +180,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A36E155028FA435700239E22 /* ContentView.swift in Sources */,
+				A3891E8F28FA4A2F00CEB435 /* UserViewModel.swift in Sources */,
+				A3891E9328FA4B2500CEB435 /* PopUpScreen.swift in Sources */,
 				A36E154E28FA435700239E22 /* eduSafeApp.swift in Sources */,
+				A3891E9128FA4A8400CEB435 /* User.swift in Sources */,
+				A3891E8D28FA478B00CEB435 /* LoginScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +385,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A3891E9628FA4DC700CEB435 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A3891E9728FA4DC700CEB435 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3891E9628FA4DC700CEB435 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		A3891E9928FA4DC700CEB435 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3891E9628FA4DC700CEB435 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		A3891E9B28FA4DC700CEB435 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3891E9628FA4DC700CEB435 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A36E154228FA435700239E22 /* Project object */;
 }
