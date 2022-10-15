@@ -28,12 +28,12 @@ class UserViewModel: ObservableObject {
         user != nil && userIsAuthenticated
     }
     
-    func login(email: String, password: String, completion: @escaping (Bool) -> (Void)) {
+    func login(email: String, password: String, hasPassword: Bool, completion: @escaping (Bool) -> (Void)) {
         isAuthenticating = true
         
         auth.signIn(withEmail: email, password: password) { [weak self] result, error in
             
-            if result == nil || error != nil {
+            if result == nil || error != nil  || !hasPassword {
                 self?.isAuthenticating = false
                 completion(false)
                 return
@@ -46,9 +46,6 @@ class UserViewModel: ObservableObject {
                     self?.isAuthenticating = false
                     completion(result)
                 }
-                
-                
-
             }
         }
         
@@ -78,6 +75,9 @@ class UserViewModel: ObservableObject {
             }
         }
     }
-    
-    
 }
+
+// authentication functions still needed:
+// handleNewUser: (new page for setup user) if uid in database and !hasPassword, send an email
+
+

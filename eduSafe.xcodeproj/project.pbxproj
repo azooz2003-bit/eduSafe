@@ -18,6 +18,8 @@
 		A3891E9828FA4DC700CEB435 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A3891E9728FA4DC700CEB435 /* FirebaseAuth */; };
 		A3891E9A28FA4DC700CEB435 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A3891E9928FA4DC700CEB435 /* FirebaseFirestore */; };
 		A3891E9C28FA4DC700CEB435 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3891E9B28FA4DC700CEB435 /* FirebaseFirestoreSwift */; };
+		D5F2DC4428FAF5930045D51D /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F2DC4328FAF5930045D51D /* School.swift */; };
+		D5F2DC4628FAF85D0045D51D /* SchoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F2DC4528FAF85D0045D51D /* SchoolViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		A3891E9028FA4A8400CEB435 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A3891E9228FA4B2500CEB435 /* PopUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpScreen.swift; sourceTree = "<group>"; };
 		A3891E9428FA4C9F00CEB435 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D5F2DC4328FAF5930045D51D /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
+		D5F2DC4528FAF85D0045D51D /* SchoolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 			children = (
 				A3891E8E28FA4A2F00CEB435 /* UserViewModel.swift */,
 				A3891E9028FA4A8400CEB435 /* User.swift */,
+				D5F2DC4328FAF5930045D51D /* School.swift */,
+				D5F2DC4528FAF85D0045D51D /* SchoolViewModel.swift */,
 			);
 			path = "Model + Controller";
 			sourceTree = "<group>";
@@ -181,10 +187,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3891E8F28FA4A2F00CEB435 /* UserViewModel.swift in Sources */,
+				D5F2DC4428FAF5930045D51D /* School.swift in Sources */,
 				A3891E9328FA4B2500CEB435 /* PopUpScreen.swift in Sources */,
 				A36E154E28FA435700239E22 /* eduSafeApp.swift in Sources */,
 				A3891E9128FA4A8400CEB435 /* User.swift in Sources */,
 				A3891E8D28FA478B00CEB435 /* LoginScreen.swift in Sources */,
+				D5F2DC4628FAF85D0045D51D /* SchoolViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
