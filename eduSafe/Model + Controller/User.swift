@@ -8,15 +8,17 @@
 import Foundation
 
 class User: Codable {
+    var email: String
     var uuid: String
     var name: String
-    var hasPassword: Bool
+    var hasPassword: Bool = false
     var schoolid: String
     
-    init(uuid: String, name: String, hasPassword: Bool, schoolid: String) {
+    init(email: String, uuid: String, name: String, hasPassword: Bool = false, schoolid: String) {
+        self.email = email
+        self.hasPassword = hasPassword
         self.name = name
         self.uuid = uuid
-        self.hasPassword = hasPassword
         self.schoolid = schoolid
     }
 }

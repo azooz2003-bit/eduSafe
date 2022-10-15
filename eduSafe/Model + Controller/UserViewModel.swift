@@ -28,7 +28,7 @@ class UserViewModel: ObservableObject {
         user != nil && userIsAuthenticated
     }
     
-    func login(email: String, password: String, completion: @escaping (Bool) -> (Void)) {
+    func login(school: String, email: String, password: String, completion: @escaping (Bool) -> (Void)) {
         isAuthenticating = true
         
         auth.signIn(withEmail: email, password: password) { [weak self] result, error in
@@ -40,9 +40,15 @@ class UserViewModel: ObservableObject {
                 return
             } else {
                 print((self?.uuid)!)
-                
+                self?.checkNewUser(school: school, email: email) { success in
+                    if success {
+                        completion(true)
+                    } else {
+                        completion(false)
+                        return
+                    }
+                }
                 // check if self?.hasPassword, if not, then exit and go to the user setup page with send email
-                 
                 self?.sync() { result in
                     print("Sync done:")
                     print(self?.user)
@@ -78,6 +84,70 @@ class UserViewModel: ObservableObject {
             }
         }
     }
+    
+    // WHEN SETTING NEW USER, TAKING SCHOOL FROM DROPDOWN AND EMAIL INPUT
+    func checkNewUser(school: String, email: String, completion: @escaping (Bool) -> Void) {
+        isAuthenticating = true
+        db.collection("schools").document(school).getDocument { (document, error) in
+            if (document == nil || error != nil) {
+                print("Error pre-sync")
+                completion(false)
+                return
+            }
+            
+            do {
+                
+                let users = document!.data()!["validUsers"] as? Array ?? [""]
+                if !users.contains(email) {
+                    completion(false)
+                    self.isAuthenticating = false
+                } else {
+                    completion(true)
+                    self.user? = User(email: email, uuid: "", name: "none", schoolid: school)
+                    self.isAuthenticating = false
+                }
+                print(try document!.data(as: User.self))
+            } catch {
+                print("SYNC ERROR: \(error)")
+                completion(false)
+                self.isAuthenticating = false
+            }
+        }
+    }
+    
+    func createUserAuth(password: String, completion: @escaping (Bool) -> Void) {
+        isAuthenticating = true
+        auth.createUser(withEmail: user!.email, password: password) { [weak self] result, error in
+            
+            if error != nil {
+                self!.isAuthenticating = false
+                completion(false)
+                return
+            } else {
+                
+                //User(uuid: (self?.uuid)!,  notes: [])
+                self?.addData() { success in
+                    completion(success)
+                }
+                self?.isAuthenticating = false
+            }
+              
+            
+        }
+    }
+    
+    func addData(completion: @escaping (Bool) -> Void) {
+        if !userIsAuthenticated {
+            completion(false)
+        }
+        do {
+            try db.collection("users").document(user!.uuid).setData(from: user)
+            completion(true)
+        } catch {
+            completion(false)
+        }
+    }
+    
 }
 
 // authentication functions needed:
