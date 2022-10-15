@@ -85,6 +85,8 @@ class UserViewModel: ObservableObject {
 // sendResetPasswordEmail
 // updateUser (password and maybe name)
 // logout
+// createNewUser
+//
 
 
 // other functions:
