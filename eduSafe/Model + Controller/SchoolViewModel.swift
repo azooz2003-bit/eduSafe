@@ -15,13 +15,13 @@ import FirebaseStorage
 
 
 class SchoolViewModel: ObservableObject {
-    
+//    @Published var user: User?
+//
+//    private let auth = Auth.auth()
+//    private let db = Firestore.firestore()
     
 }
 
-
-//private let auth = Auth.auth()
-private let db = Firestore.firestore()
 
 
 
@@ -60,21 +60,18 @@ private let db = Firestore.firestore()
 // if lat < map.left, resLat = map.left. if lat > map.right, resLat = map.right. Else resLat = (map.right-lat) * MAP_SCALE
 // repeat for lon and map.top/bottom
 
-// displayAlerts
-// make sure the user is logged in and verified
-// get schoolID from user
-// get alerts array in school
+// displayAlerts()
+// get schoolID from user:
+// let uid = auth.currentUser?.uid      (throw error if no user)
+// school = db.collection("users").document(uid).school
+// get alerts array in school:
+// alerts[] = db.collections("schools").document(school).alerts
 // for each alert in alerts:
-// printAlert:
-// put dot on map at locationToMap(alert.location, school.mapEdges), adjusted to the frontend zoom/placement
-//  - more transparent the longer it's been since the alert, until it's been 2 hours where it disappears
-//  - radius is already partially transparent, and alert.radius changes circle radius
+//      if alert.time < 2 hours
+//          printAlert(alert, school)
 
-
-
-
-
-// later functions
-// ?go to next floor: switches the current map view
-// ?zoom/swipe functions
-
+// printAlert()
+// make a red circle, along with a larger semi-transparent circle around it (length = radius)
+// transparencyMultiplier = (2hours - (0.75 * time))
+// visualAlert.opacity *= transparencyMultiplier
+// put the dot on the map at the location: locationToMap(alert.location, school.mapEdges)
