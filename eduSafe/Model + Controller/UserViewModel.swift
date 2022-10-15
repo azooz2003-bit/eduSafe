@@ -17,7 +17,8 @@ class UserViewModel: ObservableObject {
     @Published var isAuthenticating: Bool = false
     private let auth = Auth.auth()
     private let db = Firestore.firestore()
-    
+        
+    var schools: [String] = []
     var uuid: String? {
         auth.currentUser?.uid
     }
@@ -148,23 +149,29 @@ class UserViewModel: ObservableObject {
         }
     }
     
-    func getAllSchools(completion: @escaping ([String]) -> Void) {
-        
-
-        db.collection("schools").getDocuments() { (snapshot, error) in
-            if error != nil || snapshot == nil {
-                completion([])
-                return
-            } else {
-                var school: [String] = []
-                snapshot!.documents.forEach{ docSnapshot in
-                    school.append(docSnapshot.documentID)
-                }
-                completion(school)
-                
+    func fetchAllSchools() async {
+        var school: [String] = []
+        print(db.collection("schools").document("SOCH").documentID)
+        do {
+            let snap = try await db.collection("schools").getDocuments()
+            snap.documents.forEach { docSnapshot in
+                school.append(docSnapshot.documentID)
             }
- 
+            schools = school
+            print(schools)
+        } catch {
+            print("error")
         }
+        
+    }
+    
+    func getSchools() {
+       
+        Task {
+            await fetchAllSchools()
+        }
+        
+        
     }
     
     
