@@ -8,6 +8,11 @@
 import Foundation
 import SwiftUI
 
+class SchoolViewModel: ObservableObject {
+    
+    
+}
+
 
 //private let auth = Auth.auth()
 //private let db = Firestore.firestore()

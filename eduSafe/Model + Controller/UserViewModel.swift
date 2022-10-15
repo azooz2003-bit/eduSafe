@@ -148,7 +148,29 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    func getAllSchools(completion: @escaping ([String]) -> Void) {
+        
+
+        db.collection("schools").getDocuments() { (snapshot, error) in
+            if error != nil || snapshot == nil {
+                completion([])
+                return
+            } else {
+                var school: [String] = []
+                snapshot!.documents.forEach{ docSnapshot in
+                    school.append(docSnapshot.documentID)
+                }
+                completion(school)
+                
+            }
+ 
+        }
+    }
+    
+    
 }
+    
+
 
 // authentication functions needed:
 // sendPasswordEmail
