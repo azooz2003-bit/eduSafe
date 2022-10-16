@@ -97,8 +97,8 @@ class UserViewModel: ObservableObject {
             }
             
             do {
-                
-                let users = document!.data()!["validUsers"] as? Array ?? [""]
+                let usersDict = document!.data()!["validUsers"] as? Dictionary ?? ["": false]
+                let users = (document!.data()!["validUsers"] as? Dictionary ?? ["":false]).keys
                 if !users.contains(email) {
                     completion(false)
                     self.isAuthenticating = false
@@ -126,7 +126,6 @@ class UserViewModel: ObservableObject {
                 return
             } else {
                 
-                //User(uuid: (self?.uuid)!,  notes: [])
                 self?.addData() { success in
                     completion(success)
                 }
@@ -173,6 +172,7 @@ class UserViewModel: ObservableObject {
         
         
     }
+    
     
     
 }

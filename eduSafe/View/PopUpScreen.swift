@@ -10,6 +10,7 @@ import SwiftUI
 struct PopUpScreen: View {
     @State var loginPressed = false
     @State var adminSetupPressed = false
+    @State var newUserPressed = false
     @State var showAlert = false
     @EnvironmentObject var userVM: UserViewModel
 
@@ -20,10 +21,17 @@ struct PopUpScreen: View {
                 NavigationLink(destination: LoginScreen().environmentObject(userVM), isActive: $loginPressed) {
                     EmptyView()
                 }
+                NavigationLink(destination: AdminForm().environmentObject(userVM), isActive: $adminSetupPressed) {
+                    EmptyView()
+                }
+                NavigationLink(destination: NewUserScreen().environmentObject(userVM), isActive: $newUserPressed) {
+                    EmptyView()
+                }
+                
                 
                 Button(action: {
-                    loginPressed = true
-                    print("clicked login")
+                    adminSetupPressed = true
+                    print("setup clicked")
                 }) {
                     HStack {
                         Text("School Setup").foregroundColor(.white).fontWeight(Font.Weight.medium).font(.system(size: 30, design: .rounded))
@@ -51,6 +59,22 @@ struct PopUpScreen: View {
                     Button("OK", role: .cancel) { showAlert = false }
                 }
                 
+                Button(action: {
+                    Task {
+                        await userVM.fetchAllSchools()
+                        newUserPressed = true
+                    }
+                    
+                    print("new user clicked")
+                }) {
+                    
+                    Text("New user?").foregroundColor(.blue).fontWeight(Font.Weight.medium).font(.system(.title2, design: .rounded))
+                        
+                    
+                    
+                }.padding(EdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)).alert("Invalid field or error 404.", isPresented: $showAlert) {
+                    Button("OK", role: .cancel) { showAlert = false }
+                }
                 
                 
             }
@@ -60,6 +84,6 @@ struct PopUpScreen: View {
 
 struct PopUpScreen_Previews: PreviewProvider {
     static var previews: some View {
-        PopUpScreen()
+        PopUpScreen().environmentObject(UserViewModel())
     }
 }

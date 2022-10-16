@@ -16,6 +16,9 @@
 		A3891E9328FA4B2500CEB435 /* PopUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3891E9228FA4B2500CEB435 /* PopUpScreen.swift */; };
 		A3891E9528FA4C9F00CEB435 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3891E9428FA4C9F00CEB435 /* GoogleService-Info.plist */; };
 		A3891E9E28FB014500CEB435 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3891E9D28FB014500CEB435 /* MapView.swift */; };
+		A3E9BE9328FB717C00F6D9DB /* AdminForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9BE9228FB717C00F6D9DB /* AdminForm.swift */; };
+		A3E9BE9528FB719300F6D9DB /* NewUserScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9BE9428FB719300F6D9DB /* NewUserScreen.swift */; };
+		A3E9BE9728FB7D8A00F6D9DB /* SelectPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9BE9628FB7D8A00F6D9DB /* SelectPassword.swift */; };
 		A43301BA28FB1ED2009793E0 /* TestLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43301B928FB1ED2009793E0 /* TestLocationView.swift */; };
 		A43301BC28FB1EF5009793E0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43301BB28FB1EF5009793E0 /* LocationManager.swift */; };
 		A43301BE28FB1F1F009793E0 /* LocationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43301BD28FB1F1F009793E0 /* LocationRequestView.swift */; };
@@ -41,6 +44,9 @@
 		A3891E9228FA4B2500CEB435 /* PopUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpScreen.swift; sourceTree = "<group>"; };
 		A3891E9428FA4C9F00CEB435 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3891E9D28FB014500CEB435 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A3E9BE9228FB717C00F6D9DB /* AdminForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminForm.swift; sourceTree = "<group>"; };
+		A3E9BE9428FB719300F6D9DB /* NewUserScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserScreen.swift; sourceTree = "<group>"; };
+		A3E9BE9628FB7D8A00F6D9DB /* SelectPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPassword.swift; sourceTree = "<group>"; };
 		A43301B928FB1ED2009793E0 /* TestLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLocationView.swift; sourceTree = "<group>"; };
 		A43301BB28FB1EF5009793E0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A43301BD28FB1F1F009793E0 /* LocationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
@@ -121,6 +127,9 @@
 				A3891E9228FA4B2500CEB435 /* PopUpScreen.swift */,
 				A3891E8C28FA478B00CEB435 /* LoginScreen.swift */,
 				A3891E9D28FB014500CEB435 /* MapView.swift */,
+				A3E9BE9228FB717C00F6D9DB /* AdminForm.swift */,
+				A3E9BE9428FB719300F6D9DB /* NewUserScreen.swift */,
+				A3E9BE9628FB7D8A00F6D9DB /* SelectPassword.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,8 +236,11 @@
 				A43301BE28FB1F1F009793E0 /* LocationRequestView.swift in Sources */,
 				A36E154E28FA435700239E22 /* eduSafeApp.swift in Sources */,
 				A3891E9128FA4A8400CEB435 /* User.swift in Sources */,
+				A3E9BE9528FB719300F6D9DB /* NewUserScreen.swift in Sources */,
+				A3E9BE9728FB7D8A00F6D9DB /* SelectPassword.swift in Sources */,
 				A3891E8D28FA478B00CEB435 /* LoginScreen.swift in Sources */,
 				D5F2DC4628FAF85D0045D51D /* SchoolViewModel.swift in Sources */,
+				A3E9BE9328FB717C00F6D9DB /* AdminForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
