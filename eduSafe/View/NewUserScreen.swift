@@ -1,21 +1,21 @@
 //
-//  LoginScreen.swift
+//  NewUserScreen.swift
 //  eduSafe
 //
-//  Created by Abdulaziz Albahar on 10/14/22.
+//  Created by Abdulaziz Albahar on 10/15/22.
 //
 
 import SwiftUI
 
-struct LoginScreen: View {
+struct NewUserScreen: View {
     @State var email = ""
     @State var password = ""
     @State var showAlert = false
-    @State var isAuthenticatedAndSynced = false
+    @State var isValidEmail = false
     @State var schoolChoice = ""
     
     var fieldsEmpty: Bool {
-        email.isEmpty || password.isEmpty || schoolChoice.isEmpty
+        email.isEmpty || schoolChoice.isEmpty
     }
     var buttonColor: Color {
         if (!fieldsEmpty) {
@@ -24,24 +24,18 @@ struct LoginScreen: View {
             return Color(.gray)
         }
     }
-    var view: LocationRequestView {
-        // IF LOCATION APPROVED
-        LocationRequestView()
-    }
     
     @EnvironmentObject var userVM: UserViewModel
     
     var body: some View {
         NavigationStack {
-            // NAV LINKS
-            NavigationLink(destination: view.environmentObject(userVM), isActive: $isAuthenticatedAndSynced) {
-                EmptyView()
-            }
-                        
-            
             VStack {
-                Text("Login").fontWeight(Font.Weight.bold).font(.system(size: 65, design: .rounded)).padding(EdgeInsets(top: 30, leading: 0 , bottom: 200, trailing: 0))
+                NavigationLink(destination: SelectPassword().environmentObject(userVM), isActive: $isValidEmail) {
+                    EmptyView()
+                }
                 
+                Text("New User").fontWeight(Font.Weight.bold).font(.system(size: 65, design: .rounded))
+                Text("(Validate school account)").padding(EdgeInsets(top: 0, leading: 0 , bottom: 200, trailing: 0)).italic().opacity(0.8).font(.title2)
                 Menu {
                     Button("yooo", action: {schoolChoice = "yooo"})
                     
@@ -69,27 +63,27 @@ struct LoginScreen: View {
                 Text("Email").fontWeight(.bold).foregroundColor(.black).frame(minWidth: 200, maxWidth: 400, minHeight: 60, maxHeight: 75, alignment: .leading).padding(.leading).font(Font.system(.title2))
                 TextField("jsmith99@gmail.com" + "", text: $email).frame(minWidth: 200, maxWidth: 400, alignment: .leading).padding(.leading).font(.system(.title3, design: .rounded)).disableAutocorrection(true).autocapitalization(.none).keyboardType(.emailAddress)
                 Divider().padding(.leading).padding(.trailing)
-                Text("Password").fontWeight(.bold).foregroundColor(.black).frame(minWidth: 200, maxWidth: 400, minHeight: 60, maxHeight: 75, alignment: .leading).padding(.leading).font(Font.system(.title2))
-                SecureField("must contain 8+ characters", text: $password).frame(minWidth: 200, maxWidth: 400, alignment: .leading).padding(.leading).font(.system(.title3, design: .rounded)).disableAutocorrection(true).autocapitalization(.none)
-                Divider().padding(.leading).padding(.trailing)
                 
                 Button(action: {
                     
-                }) {
-                    Text("Forgot password?").tint(.blue).padding(.top)
-                }
-                
-                Button(action: {
-                    userVM.login(school: schoolChoice, email: email, password: password) { success in
+                    userVM.checkNewUser(school: schoolChoice, email: email) { success in
+                        
                         if success {
-                            isAuthenticatedAndSynced = true
+                            isValidEmail = true
+                            userVM.user! = User(email: email, uuid: "", name: "none", schoolid: schoolChoice)
                         } else {
+                            print("ERROR ON NEW USER")
                             showAlert = true
                         }
                     }
                 }) {
+                    if (userVM.isAuthenticating) {
+                        ProgressView().foregroundColor(.white).fontWeight(Font.Weight.medium).font(.system(size: 30, design: .rounded)).frame(minWidth: 200, maxWidth: 400, minHeight: 60, maxHeight: 75, alignment: .center).background(buttonColor).cornerRadius(20, antialiased: true).shadow(radius: 4)
+                        
+                    } else {
+                        Text("Proceed").foregroundColor(.white).fontWeight(Font.Weight.medium).font(.system(size: 30, design: .rounded)).frame(minWidth: 200, maxWidth: 400, minHeight: 60, maxHeight: 75, alignment: .center).background(buttonColor).cornerRadius(20, antialiased: true).shadow(radius: 4)
+                    }
                     
-                    Text("Proceed").foregroundColor(.white).fontWeight(Font.Weight.medium).font(.system(size: 30, design: .rounded)).frame(minWidth: 200, maxWidth: 400, minHeight: 60, maxHeight: 75, alignment: .center).background(buttonColor).cornerRadius(20, antialiased: true).shadow(radius: 4)
                     
                 }.disabled(fieldsEmpty).padding(EdgeInsets.init(top: 40, leading: 20, bottom: 20, trailing: 20)).shadow(radius: 4).alert("Invalid field or error 404.", isPresented: $showAlert) {
                     Button("OK", role: .cancel) { showAlert = false }
@@ -98,13 +92,10 @@ struct LoginScreen: View {
         }
         
     }
-    
-
 }
 
-
-struct LoginScreen_Previews: PreviewProvider {
+struct NewUserScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LoginScreen().environmentObject(UserViewModel())
+        NewUserScreen().environmentObject(UserViewModel())
     }
 }

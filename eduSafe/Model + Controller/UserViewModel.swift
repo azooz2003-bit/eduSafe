@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 import FirebaseAuth
 
 class UserViewModel: ObservableObject {
-    @Published var user: User?
+    @Published var user: User? = User(email: "", uuid: "", name: "", schoolid: "")
     
     @Published var isAuthenticating: Bool = false
     private let auth = Auth.auth()
@@ -36,6 +36,7 @@ class UserViewModel: ObservableObject {
             
             
             if result == nil || error != nil {
+                print(error)
                 self?.isAuthenticating = false
                 completion(false)
                 return
@@ -44,14 +45,16 @@ class UserViewModel: ObservableObject {
                 self?.checkNewUser(school: school, email: email) { success in
                     if success {
                         completion(true)
+                        print("check success")
                     } else {
                         completion(false)
                         return
+                        print("check failure")
                     }
                 }
                 // check if self?.hasPassword, if not, then exit and go to the user setup page with send email
                 self?.sync() { result in
-                    print("Sync done:")
+                    print("Sync " + result.description)
                     print(self?.user)
                     self?.isAuthenticating = false
                     completion(result)
@@ -60,6 +63,7 @@ class UserViewModel: ObservableObject {
         }
         
     }
+    
     
     func sync(completion: @escaping (Bool) -> Void) {
         if !userIsAuthenticated {
@@ -97,17 +101,20 @@ class UserViewModel: ObservableObject {
             }
             
             do {
-                
-                let users = document!.data()!["validUsers"] as? Array ?? [""]
+                let usersDict = document!.data()!["validUsers"] as? Dictionary ?? ["": false]
+                let users = (document!.data()!["validUsers"] as? Dictionary ?? ["":false]).keys
                 if !users.contains(email) {
+                    print("NOT FOUND")
                     completion(false)
                     self.isAuthenticating = false
                 } else {
-                    completion(true)
-                    self.user? = User(email: email, uuid: "", name: "none", schoolid: school)
+                    print("FOUND")
+                    print("email is" + email)
+                    
                     self.isAuthenticating = false
+                    completion(true)
                 }
-                print(try document!.data(as: User.self))
+                //print(try document!.data(as: User.self))
             } catch {
                 print("SYNC ERROR: \(error)")
                 completion(false)
@@ -121,13 +128,14 @@ class UserViewModel: ObservableObject {
         auth.createUser(withEmail: user!.email, password: password) { [weak self] result, error in
             
             if error != nil {
+                print("create error: " + error!.localizedDescription)
                 self!.isAuthenticating = false
                 completion(false)
                 return
             } else {
-                
-                //User(uuid: (self?.uuid)!,  notes: [])
+                self?.user?.uuid = self?.uuid ?? "no id"
                 self?.addData() { success in
+                    print("pre add was " + success.description)
                     completion(success)
                 }
                 self?.isAuthenticating = false
@@ -142,10 +150,11 @@ class UserViewModel: ObservableObject {
             completion(false)
         }
         do {
-            try db.collection("users").document(user!.uuid).setData(from: user)
+            try db.collection("users").document((self.uuid)!).setData(from: user)
             completion(true)
         } catch {
             completion(false)
+            print("adding data error")
         }
     }
     
@@ -227,6 +236,7 @@ class UserViewModel: ObservableObject {
         // visualAlert.opacity *= transparencyMultiplier
         // put the dot on the map at the location
 
+    
     
     
 }
