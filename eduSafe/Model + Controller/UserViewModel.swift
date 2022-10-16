@@ -185,7 +185,27 @@ class UserViewModel: ObservableObject {
     
     func displayAlerts() {
         var school: String = self.user!.schoolid
-        var schoolDoc = db.collection("schools")
+        var schoolDoc = db.collection("schools").document(school).getDocument{ snapshot, error in
+            
+            if error != nil {
+                return
+            }
+            let data = snapshot?.data()
+            let e = MapEdges(
+                top: data!["mapEdges"][0],
+                bottom: data!["mapEdges"][2],
+                left: data!["mapEdges"][3],
+                right: data!["mapEdges"][1])
+            for alert in data!["alerts"] {
+                printAlert(c: alert["location"], e: e)
+            }
+        }
+        
+        let snap = db.collection("schools").document(school)
+        
+        
+        
+        
         
         // school = db.collection("users").document(uid).school
         // get alerts array in school:
@@ -196,12 +216,12 @@ class UserViewModel: ObservableObject {
         
     }
     
-    func printAlert(c:Coordinate, e:mapEdges) {
+    func printAlert(c:Coordinate, e:MapEdges) {
         let width: Float = e.top - e.bottom
         let height: Float = e.right - e.left
         if (c.lat < e.top && c.lat > e.bottom && c.lon < e.right && c.lon > e.left){
-            let latPercent: Float = (e.top - c.lat) / height
-            let lonPercent: Float = 1 - ((e.right - c.lon) / width)
+            let latPercent: Float = 1-((e.top - c.lat) / height)
+            let lonPercent: Float = (e.right - c.lon) / width
             printAlertToMap(latPercent, lonPercent)
         }
     }

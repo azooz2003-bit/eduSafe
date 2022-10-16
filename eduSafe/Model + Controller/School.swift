@@ -10,11 +10,12 @@ struct Coordinate: Codable { // user's current location
     var lon:Float
 }
 
-class mapEdges: Codable {
+struct MapEdges: Codable {
     var top:Float
     var bottom:Float
     var left:Float
     var right:Float
+    
 }
 
 struct imageMap: Codable {
@@ -35,7 +36,7 @@ import Foundation
 class School: Codable {
     var uuid: String // admin's uid is the school's id
     var name: String
-    var corners: mapEdges
+    var corners: MapEdges
     //var images: [imageMap] = []
     var alerts: [Alert] = []
 
