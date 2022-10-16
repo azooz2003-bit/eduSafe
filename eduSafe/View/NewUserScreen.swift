@@ -67,9 +67,12 @@ struct NewUserScreen: View {
                 Button(action: {
                     
                     userVM.checkNewUser(school: schoolChoice, email: email) { success in
+                        
                         if success {
                             isValidEmail = true
+                            userVM.user! = User(email: email, uuid: "", name: "none", schoolid: schoolChoice)
                         } else {
+                            print("ERROR ON NEW USER")
                             showAlert = true
                         }
                     }

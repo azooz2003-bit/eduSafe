@@ -12,9 +12,11 @@ let gsReference = Storage.storage().reference(forURL: "gs://edusafe-ffcb0.appspo
 
 
 struct MapView: View {
+    @StateObject var locationManager = LocationManager.shared
+    
     var body: some View {
-        Image("Image")
-//        UIImageView(image: <#T##UIImage?#>)
+        UIImageView(image: <#T##UIImage?#>).
+//
             
         
         // gs://edusafe-ffcb0.appspot.com/fake_school_blueprint.png

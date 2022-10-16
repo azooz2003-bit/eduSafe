@@ -19,7 +19,6 @@
 		A3E9BE9328FB717C00F6D9DB /* AdminForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9BE9228FB717C00F6D9DB /* AdminForm.swift */; };
 		A3E9BE9528FB719300F6D9DB /* NewUserScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9BE9428FB719300F6D9DB /* NewUserScreen.swift */; };
 		A3E9BE9728FB7D8A00F6D9DB /* SelectPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9BE9628FB7D8A00F6D9DB /* SelectPassword.swift */; };
-		A43301BA28FB1ED2009793E0 /* TestLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43301B928FB1ED2009793E0 /* TestLocationView.swift */; };
 		A43301BC28FB1EF5009793E0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43301BB28FB1EF5009793E0 /* LocationManager.swift */; };
 		A43301BE28FB1F1F009793E0 /* LocationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43301BD28FB1F1F009793E0 /* LocationRequestView.swift */; };
 		D5001A3828FB3FAE00AE709D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5001A3728FB3FAE00AE709D /* FirebaseAuth */; };
@@ -47,7 +46,7 @@
 		A3E9BE9228FB717C00F6D9DB /* AdminForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminForm.swift; sourceTree = "<group>"; };
 		A3E9BE9428FB719300F6D9DB /* NewUserScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserScreen.swift; sourceTree = "<group>"; };
 		A3E9BE9628FB7D8A00F6D9DB /* SelectPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPassword.swift; sourceTree = "<group>"; };
-		A43301B928FB1ED2009793E0 /* TestLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLocationView.swift; sourceTree = "<group>"; };
+		A3E9BE9828FBB59900F6D9DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A43301BB28FB1EF5009793E0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A43301BD28FB1F1F009793E0 /* LocationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
 		D5F2DC4328FAF5930045D51D /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		A36E154C28FA435700239E22 /* eduSafe */ = {
 			isa = PBXGroup;
 			children = (
+				A3E9BE9828FBB59900F6D9DB /* Info.plist */,
 				A43301BF28FB1F3D009793E0 /* Location Stuff */,
 				A3891E9428FA4C9F00CEB435 /* GoogleService-Info.plist */,
 				A36E155D28FA462000239E22 /* View */,
@@ -139,7 +139,6 @@
 			children = (
 				A43301BD28FB1F1F009793E0 /* LocationRequestView.swift */,
 				A43301BB28FB1EF5009793E0 /* LocationManager.swift */,
-				A43301B928FB1ED2009793E0 /* TestLocationView.swift */,
 			);
 			path = "Location Stuff";
 			sourceTree = "<group>";
@@ -232,7 +231,6 @@
 				A43301BC28FB1EF5009793E0 /* LocationManager.swift in Sources */,
 				D5F2DC4428FAF5930045D51D /* School.swift in Sources */,
 				A3891E9328FA4B2500CEB435 /* PopUpScreen.swift in Sources */,
-				A43301BA28FB1ED2009793E0 /* TestLocationView.swift in Sources */,
 				A43301BE28FB1F1F009793E0 /* LocationRequestView.swift in Sources */,
 				A36E154E28FA435700239E22 /* eduSafeApp.swift in Sources */,
 				A3891E9128FA4A8400CEB435 /* User.swift in Sources */,
@@ -372,6 +370,8 @@
 				DEVELOPMENT_TEAM = KJ7YS82G45;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = eduSafe/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow us to use your location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -401,6 +401,8 @@
 				DEVELOPMENT_TEAM = KJ7YS82G45;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = eduSafe/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow us to use your location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

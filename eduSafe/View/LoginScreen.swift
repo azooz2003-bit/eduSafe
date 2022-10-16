@@ -34,7 +34,7 @@ struct LoginScreen: View {
     var body: some View {
         NavigationStack {
             // NAV LINKS
-            NavigationLink(destination: view, isActive: $isAuthenticatedAndSynced) {
+            NavigationLink(destination: view.environmentObject(userVM), isActive: $isAuthenticatedAndSynced) {
                 EmptyView()
             }
                         

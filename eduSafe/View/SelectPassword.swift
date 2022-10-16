@@ -30,6 +30,11 @@ struct SelectPassword: View {
     var body: some View {
         NavigationStack {
             VStack {
+                
+                NavigationLink(destination: LocationRequestView().environmentObject(userVM), isActive: $passwordValidated) {
+                    EmptyView()
+                }
+                
                 Text("Set password").fontWeight(Font.Weight.bold).font(.system(size: 50, design: .rounded))
                 Text("(Set permanent password)").padding(EdgeInsets(top: 0, leading: 0 , bottom: 200, trailing: 0)).italic().opacity(0.8).font(.title2)
                 
@@ -46,7 +51,9 @@ struct SelectPassword: View {
                     if (password != confirmPassword) {
                         showAlert = true
                     } else {
-                        userVM.login(school: userVM.user!.schoolid, email: userVM.user!.email, password: password) { success in
+                        print(userVM.user?.email ?? "no email")
+                        
+                        userVM.createUserAuth( password: password) { success in
                             if success {
                                 passwordValidated = true
                             } else {
