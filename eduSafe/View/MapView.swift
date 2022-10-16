@@ -10,12 +10,21 @@ import FirebaseStorage
 
 
 struct MapView: View {
+    @StateObject var locationManager = LocationManager.shared
+    @State var currentLong: Float
+    @State var currentLat: Float
+    @State var corners: Corners = Corners(left: <#T##Float#>, right: <#T##Float#>, top: <#T##Float#>, bottom: <#T##Float#>)
+    
+    
     var body: some View {
-        Image("layout").resizable().scaledToFit()
-//        UIImageView(image: <#T##UIImage?#>)
-            
-        
-        // gs://edusafe-ffcb0.appspot.com/fake_school_blueprint.png
+        ZStack {
+            GeometryReader { size in
+                
+            }
+            Image("layout").resizable().scaledToFit()
+            PinComponent() // location on blueprint:
+        }.border(.black, width: 3).padding(.leading).padding(.trailing)
+        locationManager.userLocation?.coordinate
     }
 }
 

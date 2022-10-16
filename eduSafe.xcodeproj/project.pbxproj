@@ -19,6 +19,8 @@
 		A3E9BE9328FB717C00F6D9DB /* AdminForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9BE9228FB717C00F6D9DB /* AdminForm.swift */; };
 		A3E9BE9528FB719300F6D9DB /* NewUserScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9BE9428FB719300F6D9DB /* NewUserScreen.swift */; };
 		A3E9BE9728FB7D8A00F6D9DB /* SelectPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9BE9628FB7D8A00F6D9DB /* SelectPassword.swift */; };
+		A3E9BE9A28FBC0D300F6D9DB /* PinComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9BE9928FBC0D300F6D9DB /* PinComponent.swift */; };
+		A3E9BE9C28FBC20600F6D9DB /* Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9BE9B28FBC20600F6D9DB /* Corners.swift */; };
 		A43301BC28FB1EF5009793E0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43301BB28FB1EF5009793E0 /* LocationManager.swift */; };
 		A43301BE28FB1F1F009793E0 /* LocationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43301BD28FB1F1F009793E0 /* LocationRequestView.swift */; };
 		D5001A3828FB3FAE00AE709D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5001A3728FB3FAE00AE709D /* FirebaseAuth */; };
@@ -47,6 +49,8 @@
 		A3E9BE9428FB719300F6D9DB /* NewUserScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserScreen.swift; sourceTree = "<group>"; };
 		A3E9BE9628FB7D8A00F6D9DB /* SelectPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPassword.swift; sourceTree = "<group>"; };
 		A3E9BE9828FBB59900F6D9DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A3E9BE9928FBC0D300F6D9DB /* PinComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinComponent.swift; sourceTree = "<group>"; };
+		A3E9BE9B28FBC20600F6D9DB /* Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corners.swift; sourceTree = "<group>"; };
 		A43301BB28FB1EF5009793E0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A43301BD28FB1F1F009793E0 /* LocationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
 		D5F2DC4328FAF5930045D51D /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 				A3891E9028FA4A8400CEB435 /* User.swift */,
 				D5F2DC4328FAF5930045D51D /* School.swift */,
 				D5F2DC4528FAF85D0045D51D /* SchoolViewModel.swift */,
+				A3E9BE9B28FBC20600F6D9DB /* Corners.swift */,
 			);
 			path = "Model + Controller";
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 				A3E9BE9228FB717C00F6D9DB /* AdminForm.swift */,
 				A3E9BE9428FB719300F6D9DB /* NewUserScreen.swift */,
 				A3E9BE9628FB7D8A00F6D9DB /* SelectPassword.swift */,
+				A3E9BE9928FBC0D300F6D9DB /* PinComponent.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,6 +237,7 @@
 				A43301BC28FB1EF5009793E0 /* LocationManager.swift in Sources */,
 				D5F2DC4428FAF5930045D51D /* School.swift in Sources */,
 				A3891E9328FA4B2500CEB435 /* PopUpScreen.swift in Sources */,
+				A3E9BE9A28FBC0D300F6D9DB /* PinComponent.swift in Sources */,
 				A43301BE28FB1F1F009793E0 /* LocationRequestView.swift in Sources */,
 				A36E154E28FA435700239E22 /* eduSafeApp.swift in Sources */,
 				A3891E9128FA4A8400CEB435 /* User.swift in Sources */,
@@ -238,6 +245,7 @@
 				A3E9BE9728FB7D8A00F6D9DB /* SelectPassword.swift in Sources */,
 				A3891E8D28FA478B00CEB435 /* LoginScreen.swift in Sources */,
 				D5F2DC4628FAF85D0045D51D /* SchoolViewModel.swift in Sources */,
+				A3E9BE9C28FBC20600F6D9DB /* Corners.swift in Sources */,
 				A3E9BE9328FB717C00F6D9DB /* AdminForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
