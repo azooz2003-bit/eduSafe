@@ -201,8 +201,8 @@ class UserViewModel: ObservableObject {
         let height: Float = e.right - e.left
         if (c.lat < e.top && c.lat > e.bottom && c.lon < e.right && c.lon > e.left){
             let latPercent: Float = (e.top - c.lat) / height
-            let lonPercent: Float = (e.right - c.lon) / width
-            printAlertToMap(latPercent: Float, lonPercent: Float)
+            let lonPercent: Float = 1 - ((e.right - c.lon) / width)
+            printAlertToMap(latPercent, lonPercent)
         }
     }
     
