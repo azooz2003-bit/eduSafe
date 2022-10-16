@@ -174,12 +174,37 @@ class UserViewModel: ObservableObject {
         
     }
     
+    func displayAlerts() {
+        var school: String = self.user!.schoolid
+        var schoolDoc = db.collection("schools")
+        
+        // school = db.collection("users").document(uid).school
+        // get alerts array in school:
+        // alerts[] = db.collections("schools").document(school).alerts
+        // for each alert in alerts:
+        //      if alert.time < 2 hours
+        //          printAlert(alert, school)
+        
+    }
+    
+    func printAlert(c:Coordinate, e:mapEdges) {
+        let width: Float = e.top - e.bottom
+        let height: Float = e.right - e.left
+        if (c.lat < e.top && c.lat > e.bottom && c.lon < e.right && c.lon > e.left){
+            let latPercent: Float = (e.top - c.lat) / height
+            let lonPercent: Float = (e.right - c.lon) / width
+            printAlertToMap(latPercent: Float, lonPercent: Float)
+        }
+    }
+    
+// dummy value: 42.383, -71.125
+    
 //    func displayAlerts() {
 //        let school = auth.currentUser
 //        let school = db.collection("users")
 //    }
-//    
-//    
+//
+//
     // displayAlerts()
     // get schoolID from user:
     // let uid = auth.currentUser?.uid      (throw error if no user)
