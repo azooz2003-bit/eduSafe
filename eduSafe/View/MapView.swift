@@ -8,12 +8,10 @@
 import SwiftUI
 import FirebaseStorage
 
-let gsReference = Storage.storage().reference(forURL: "gs://edusafe-ffcb0.appspot.com/YaleProfile.jpeg")
-
 
 struct MapView: View {
     var body: some View {
-        Image("Image")
+        Image("layout").resizable().scaledToFit()
 //        UIImageView(image: <#T##UIImage?#>)
             
         
