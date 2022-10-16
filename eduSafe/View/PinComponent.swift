@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PinComponent: View {
+    
+    
     var body: some View {
         ZStack {
             Circle().frame(minWidth: 10, maxWidth: 20, minHeight: 10, maxHeight: 20).foregroundColor(.red)

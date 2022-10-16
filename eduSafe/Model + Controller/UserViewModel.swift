@@ -183,6 +183,14 @@ class UserViewModel: ObservableObject {
         
     }
     
+    func getAlerts(school: String) {
+        // return array of alerts from school's alerts field in Firestore
+    }
+    
+    func updateAlerts(newAlert: String) {
+        
+    }
+    
 //    func displayAlerts() {
 //        let school = auth.currentUser
 //        let school = db.collection("users")
