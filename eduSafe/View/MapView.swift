@@ -10,11 +10,9 @@ import FirebaseStorage
 
 
 struct MapView: View {
-    @StateObject var locationManager = LocationManager.shared
-    
     var body: some View {
-        UIImageView(image: <#T##UIImage?#>).
-//
+        Image("layout").resizable().scaledToFit()
+//        UIImageView(image: <#T##UIImage?#>)
             
         
         // gs://edusafe-ffcb0.appspot.com/fake_school_blueprint.png
