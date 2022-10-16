@@ -60,6 +60,6 @@ struct PopUpScreen: View {
 
 struct PopUpScreen_Previews: PreviewProvider {
     static var previews: some View {
-        PopUpScreen()
+        PopUpScreen().environmentObject(UserViewModel())
     }
 }
