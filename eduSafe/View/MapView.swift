@@ -12,6 +12,7 @@ import FirebaseStorage
 struct MapView: View {
     @StateObject var locationManager = LocationManager.shared
     let timer = Timer.publish(every: 0.25, on: .main, in: .common).autoconnect()
+    @State var clicked: Bool = false
     
     
     var body: some View {
@@ -22,11 +23,23 @@ struct MapView: View {
             ZStack {
                 Image("layout").resizable().scaledToFit()
                 GeometryReader { geometry in
-                    let width = geometry.size.width*0.3
-                    let height = geometry.size.height*0.4
+                    let width1 = geometry.size.width*0.3
+                    let height1 = geometry.size.height*0.4
+                    let width2 = geometry.size.width*0.7
+                    let height2 = geometry.size.height*0.15
                     
-                    PinComponent().offset(x: width,y:height)
+                    PinComponent(color: .blue).offset(x: width1,y:height1)
+                    PinComponent(color: .red).offset(x: width2,y:height2)
+                    PinComponent(color: .red).offset(x: width2*0.84,y:height2*1.23)
+                    PinComponent(color: .red).offset(x: width2*0.75,y:height2*0.8)
+                    PinComponent(color: .red).offset(x: width2*1,y:height2*1.9)
                     
+                    if (!clicked) {
+                        PinComponent(color: .red).offset(x: width2*0.8,y:height2*0.8).hidden()
+                    } else {
+                        PinComponent(color: .red).offset(x: width1,y:height1)
+
+                    }
                     // use a forEach loop to add all the alerts in an array as blue pins
                     // Foreach(alerts)
                 }
@@ -39,6 +52,7 @@ struct MapView: View {
                         //
                     })
             Button(action: {
+                clicked = true
                 //addAlert(): adds alert to the userVM and firebase
             }) {
                 Text("Alert!").padding()

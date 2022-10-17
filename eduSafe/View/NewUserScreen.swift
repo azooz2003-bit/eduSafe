@@ -37,7 +37,6 @@ struct NewUserScreen: View {
                 Text("New User").fontWeight(Font.Weight.bold).font(.system(size: 65, design: .rounded))
                 Text("(Validate school account)").padding(EdgeInsets(top: 0, leading: 0 , bottom: 200, trailing: 0)).italic().opacity(0.8).font(.title2)
                 Menu {
-                    Button("yooo", action: {schoolChoice = "yooo"})
                     
                     //let fetchSchools = userVM.getSchools()
                     let schools = userVM.schools

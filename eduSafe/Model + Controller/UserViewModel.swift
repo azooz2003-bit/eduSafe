@@ -183,26 +183,26 @@ class UserViewModel: ObservableObject {
         
     }
     
-    func displayAlerts() {
-        var school: String = self.user!.schoolid
-        var schoolDoc = db.collection("schools").document(school).getDocument{ snapshot, error in
-            
-            if error != nil {
-                return
-            }
-            let data = snapshot?.data()
-            let e = MapEdges(
-                top: data!["mapEdges"][0],
-                bottom: data!["mapEdges"][2],
-                left: data!["mapEdges"][3],
-                right: data!["mapEdges"][1])
-            for alert in data!["alerts"] {
-                printAlert(c: alert["location"], e: e)
-            }
-        }
-        
-        let snap = db.collection("schools").document(school)
-        
+//    func displayAlerts() {
+//        var school: String = self.user!.schoolid
+//        var schoolDoc = db.collection("schools").document(school).getDocument{ snapshot, error in
+//
+//            if error != nil {
+//                return
+//            }
+//            let data = snapshot?.data()
+//            let e = MapEdges(
+//                top: data!["mapEdges"][0],
+//                bottom: data!["mapEdges"][2],
+//                left: data!["mapEdges"][3],
+//                right: data!["mapEdges"][1])
+//            for alert in data!["alerts"] {
+//                printAlert(c: alert["location"], e: e)
+//            }
+//        }
+//
+//        let snap = db.collection("schools").document(school)
+//
         
         
         
@@ -222,44 +222,18 @@ class UserViewModel: ObservableObject {
         if (c.lat < e.top && c.lat > e.bottom && c.lon < e.right && c.lon > e.left){
             let latPercent: Float = 1-((e.top - c.lat) / height)
             let lonPercent: Float = (e.right - c.lon) / width
-            printAlertToMap(latPercent, lonPercent)
+//            printAlertToMap(latPercent, lonPercent)
         }
     }
     
+    
+    
+    
 // dummy value: 42.383, -71.125
     
-//    func displayAlerts() {
-//        let school = auth.currentUser
-//        let school = db.collection("users")
-//    }
-//
-//
-    // displayAlerts()
-    // get schoolID from user:
-    // let uid = auth.currentUser?.uid      (throw error if no user)
-    // school = db.collection("users").document(uid).school
-    // get alerts array in school:
-    // alerts[] = db.collections("schools").document(school).alerts
-    // for each alert in alerts:
-    //      if alert.time < 2 hours
-    //          printAlert(alert, school)
-
-    // printAlert(c:coordinate, map:mapEdges)
-    // width: Float = map.top-map.bottom
-    // height: Float = map.right-map.left
-    // if lat < map.top && lat > map.bottom && lon < map.right && lon > map.left:
-    //      latPercent: Float = (map.top - lat) / height
-    //      lonPercent: Float = (map.right - lon) / width
-    //      printAlertToMap(latPercent: Float, lonPercent: Float):
-        // make a red circle, along with a larger semi-transparent circle around it (length = radius)
-        // transparencyMultiplier = (2hours - (0.75 * time))
-        // visualAlert.opacity *= transparencyMultiplier
-        // put the dot on the map at the location
 
     
-    
-    
-}
+
     
 
 

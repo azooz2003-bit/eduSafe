@@ -40,7 +40,7 @@ class School: Codable {
     //var images: [imageMap] = []
     var alerts: [Alert] = []
 
-    init(uuid: String, name: String, corners: mapEdges) {
+    init(uuid: String, name: String, corners: MapEdges) {
         self.name = name
         self.uuid = uuid
         self.corners = corners
