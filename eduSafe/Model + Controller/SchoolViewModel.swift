@@ -54,12 +54,6 @@ class SchoolViewModel: ObservableObject {
 // displayAlerts: iterates through list of school's alerts and places them on map image
 //      printAlert: makes a visual alert thing and puts it on the screen (over the map)
 
-
-// locationToMap (c:coordinate, map:mapEdges)
-// returns a coordinate: resLat, resLon
-// if lat < map.left, resLat = map.left. if lat > map.right, resLat = map.right. Else resLat = (map.right-lat) * MAP_SCALE
-// repeat for lon and map.top/bottom
-
 // displayAlerts()
 // get schoolID from user:
 // let uid = auth.currentUser?.uid      (throw error if no user)
@@ -70,8 +64,14 @@ class SchoolViewModel: ObservableObject {
 //      if alert.time < 2 hours
 //          printAlert(alert, school)
 
-// printAlert()
-// make a red circle, along with a larger semi-transparent circle around it (length = radius)
-// transparencyMultiplier = (2hours - (0.75 * time))
-// visualAlert.opacity *= transparencyMultiplier
-// put the dot on the map at the location: locationToMap(alert.location, school.mapEdges)
+// printAlert(c:coordinate, map:mapEdges)
+// width: Float = map.top-map.bottom
+// height: Float = map.right-map.left
+// if lat < map.top && lat > map.bottom && lon < map.right && lon > map.left:
+//      latPercent: Float = (map.top - lat) / height
+//      lonPercent: Float = (map.right - lon) / width
+//      printAlertToMap(latPercent: Float, lonPercent: Float):
+    // make a red circle, along with a larger semi-transparent circle around it (length = radius)
+    // transparencyMultiplier = (2hours - (0.75 * time))
+    // visualAlert.opacity *= transparencyMultiplier
+    // put the dot on the map at the location

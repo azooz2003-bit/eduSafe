@@ -10,8 +10,17 @@
 import SwiftUI
 
 struct LocationRequestView: View {
+    @State var locationEnabled = false
+    
+    @EnvironmentObject var userVM: UserViewModel
+    
     var body: some View {
         ZStack {
+            NavigationLink(destination: MapView().environmentObject(userVM), isActive: $locationEnabled) {
+                EmptyView()
+            }
+                        
+            
             Color(.systemGray).ignoresSafeArea()
             VStack {
                 Spacer ()
@@ -20,11 +29,11 @@ struct LocationRequestView: View {
                     .scaledToFit()
                     .frame(width: 150, height: 150)
                     .padding(.bottom, 40)
-                Text("Enable Location Services in order to use EduSafe")
+                Text("Enable Location Services in order to use EduSafe.")
                     .font(.system(size: 20, weight: .semibold))
                     .multilineTextAlignment(.center)
                     .padding()
-                Text("Start sharing your location with us")
+                Text("Start sharing your location with us.")
                     .multilineTextAlignment(.center)
                     .font(.system(size: 15, weight: .semibold))
                     .frame(width: 140)
@@ -35,6 +44,9 @@ struct LocationRequestView: View {
                 VStack{
                     Button(action: {
                         LocationManager.shared.requestLocation()
+                        if LocationManager.shared.userLocation != nil {
+                            locationEnabled = true
+                        } 
                     }) {
                         Text("Allow Location")
                             .font(.headline)
@@ -51,6 +63,6 @@ struct LocationRequestView: View {
 
 struct LocationRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationRequestView()
+        LocationRequestView().environmentObject(UserViewModel())
     }
 }

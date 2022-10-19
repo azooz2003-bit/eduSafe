@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 import FirebaseAuth
 
 class UserViewModel: ObservableObject {
-    @Published var user: User?
+    @Published var user: User? = User(email: "", uuid: "", name: "", schoolid: "")
     
     @Published var isAuthenticating: Bool = false
     private let auth = Auth.auth()
@@ -36,6 +36,7 @@ class UserViewModel: ObservableObject {
             
             
             if result == nil || error != nil {
+                print(error)
                 self?.isAuthenticating = false
                 completion(false)
                 return
@@ -44,14 +45,16 @@ class UserViewModel: ObservableObject {
                 self?.checkNewUser(school: school, email: email) { success in
                     if success {
                         completion(true)
+                        print("check success")
                     } else {
                         completion(false)
                         return
+                        print("check failure")
                     }
                 }
                 // check if self?.hasPassword, if not, then exit and go to the user setup page with send email
                 self?.sync() { result in
-                    print("Sync done:")
+                    print("Sync " + result.description)
                     print(self?.user)
                     self?.isAuthenticating = false
                     completion(result)
@@ -60,6 +63,7 @@ class UserViewModel: ObservableObject {
         }
         
     }
+    
     
     func sync(completion: @escaping (Bool) -> Void) {
         if !userIsAuthenticated {
@@ -97,17 +101,20 @@ class UserViewModel: ObservableObject {
             }
             
             do {
-                
-                let users = document!.data()!["validUsers"] as? Array ?? [""]
+                let usersDict = document!.data()!["validUsers"] as? Dictionary ?? ["": false]
+                let users = (document!.data()!["validUsers"] as? Dictionary ?? ["":false]).keys
                 if !users.contains(email) {
+                    print("NOT FOUND")
                     completion(false)
                     self.isAuthenticating = false
                 } else {
-                    completion(true)
-                    self.user? = User(email: email, uuid: "", name: "none", schoolid: school)
+                    print("FOUND")
+                    print("email is" + email)
+                    
                     self.isAuthenticating = false
+                    completion(true)
                 }
-                print(try document!.data(as: User.self))
+                //print(try document!.data(as: User.self))
             } catch {
                 print("SYNC ERROR: \(error)")
                 completion(false)
@@ -121,13 +128,14 @@ class UserViewModel: ObservableObject {
         auth.createUser(withEmail: user!.email, password: password) { [weak self] result, error in
             
             if error != nil {
+                print("create error: " + error!.localizedDescription)
                 self!.isAuthenticating = false
                 completion(false)
                 return
             } else {
-                
-                //User(uuid: (self?.uuid)!,  notes: [])
+                self?.user?.uuid = self?.uuid ?? "no id"
                 self?.addData() { success in
+                    print("pre add was " + success.description)
                     completion(success)
                 }
                 self?.isAuthenticating = false
@@ -142,10 +150,11 @@ class UserViewModel: ObservableObject {
             completion(false)
         }
         do {
-            try db.collection("users").document(user!.uuid).setData(from: user)
+            try db.collection("users").document((self.uuid)!).setData(from: user)
             completion(true)
         } catch {
             completion(false)
+            print("adding data error")
         }
     }
     
@@ -174,22 +183,81 @@ class UserViewModel: ObservableObject {
         
     }
     
-    
-}
-    
-
-
-// authentication functions needed:
-// sendPasswordEmail
-// sendResetPasswordEmail
-// updateUser (password and maybe name)
-// logout
-// createNewUser
+//    func displayAlerts() {
+//        var school: String = self.user!.schoolid
+//        var schoolDoc = db.collection("schools").document(school).getDocument{ snapshot, error in
 //
+//            if error != nil {
+//                return
+//            }
+//            let data = snapshot?.data()
+//            let e = MapEdges(
+//                top: data!["mapEdges"][0],
+//                bottom: data!["mapEdges"][2],
+//                left: data!["mapEdges"][3],
+//                right: data!["mapEdges"][1])
+//            for alert in data!["alerts"] {
+//                printAlert(c: alert["location"], e: e)
+//            }
+//        }
+//
+//        let snap = db.collection("schools").document(school)
+//
+        
+        
+        
+        
+        // school = db.collection("users").document(uid).school
+        // get alerts array in school:
+        // alerts[] = db.collections("schools").document(school).alerts
+        // for each alert in alerts:
+        //      if alert.time < 2 hours
+        //          printAlert(alert, school)
+        
+    }
+    
+    func printAlert(c:Coordinate, e:MapEdges) {
+        let width: Float = e.top - e.bottom
+        let height: Float = e.right - e.left
+        if (c.lat < e.top && c.lat > e.bottom && c.lon < e.right && c.lon > e.left){
+            let latPercent: Float = 1-((e.top - c.lat) / height)
+            let lonPercent: Float = (e.right - c.lon) / width
+//            printAlertToMap(latPercent, lonPercent)
+        }
+    }
+    
+    
+    
+    
+// dummy value: 42.383, -71.125
+    
+
+    
+
+    
 
 
-// other functions:
-// createAlert: after a user presses the alert button, make new alert object in user and in school
+//func getImage() {
+//    let storage = Storage.storage()
+//    let gsReference = storage.reference(forURL: "gs://edusafe-ffcb0.appspot.com/YaleProfile.jpeg")
+//    //
+//    gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//      if let error = error {
+//          print(error)
+//      } else {
+//        return UIImage(data: data!)
+//      }
+//    }
+//}
 
 
+//
+//islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//  if let error = error {
+//    // Uh-oh, an error occurred!
+//  } else {
+//    // Data for "images/island.jpg" is returned
+//    let image = UIImage(data: data!)
+//  }
+//}
 
