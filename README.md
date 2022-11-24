@@ -8,7 +8,7 @@ Developed in HackHarvard, Dekko is an app aiming to lessen the impact of school 
 https://devpost.com/software/dekko-g9qwut?ref_content=my-projects-tab&ref_feature=my_projects
 
 # Languages/Frameworks: 
-Swift/SwiftUI
+Swift, SwiftUI, Locations API
 
 # Cloud:
 Firebase Auth, Firestore, Firebase Storage
