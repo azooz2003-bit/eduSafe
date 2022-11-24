@@ -1,7 +1,7 @@
 # Dekko
 Developed in HackHarvard, Dekko is an app aiming to lessen the impact of school shootings by facilitating easy communication amongst school staff and first-responders. This is implemented with an alert system presented in a heatmap-like view.
 
-<img width="200" height="200" alt="dekko" src="https://user-images.githubusercontent.com/67667005/203855684-52f939e3-e252-4eb3-b5bf-48ac2efc56c5.png">
+<img width="200" height="180" alt="dekko" src="https://user-images.githubusercontent.com/67667005/203855684-52f939e3-e252-4eb3-b5bf-48ac2efc56c5.png">
 
 # Devpost Link:
 
