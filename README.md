@@ -6,9 +6,3 @@ Developed in HackHarvard, eduSafe is an app aiming to lessen the impact of schoo
 # Devpost Link:
 
 https://devpost.com/software/dekko-g9qwut?ref_content=my-projects-tab&ref_feature=my_projects
-
-# Languages/Frameworks: 
-Swift, SwiftUI, Locations API
-
-# Cloud:
-Firebase Auth, Firestore, Firebase Storage
